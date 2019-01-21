@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<div class="container-fluid">
+	<h1>Listing Dojos</h1>
+	<table class="table">
+		<thead class="thead-light">
+			<tr>
+				<td>
+					<p>Coding Dojo Branch</p>
+				</td>
+				<td>
+					<p>Street</p>
+				</td>
+				<td>
+					<p>City</p>
+				</td>
+				<td>
+					<p>State</p>
+				</td>
+				<td>
+					<p>Actions</p>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @dojo.each do |i| %>
+			<tr>
+				<td>
+					<p><%=i.branch%></p>
+				</td>
+				<td>
+					<p><%=i.street%></p>
+				</td>
+				<td>
+					<p><%=i.city%></p>
+				</td>
+				<td>
+					<p><%=i.state%></p>
+				</td>
+				<td>
+					<a href="/dojos/show/<%=i.id%>">Show</a>
+					<a href="/dojos/edit/<%=i.id%>">Edit</a>
+					<a href="/dojos/destroy/<%=i.id%>">Delete</a>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<a href="/dojos/new">New Dojo</a>
+</div>
+

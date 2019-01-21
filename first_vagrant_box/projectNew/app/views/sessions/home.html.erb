@@ -1,0 +1,23 @@
+<a href="/sessions/login">logout</a>
+<a href="/sessions/change">edit your info</a>
+<form action="/sessions/delete" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+	<button>delete</button>
+</form>
+<% if flash[:secret_notice] %>
+		<p><%= flash[:secret_notice] %></p>
+<% end %>
+<form action="/sessions/secret" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+	<input type="text" name="secret">
+	<input type="submit" name="sub" value="Post Secret">
+</form>
+<h1> Welcome <%= @info.name%>!</h1>
+<% for i in @secrets %>
+	<h3>Anon</h3>		
+	<p><%= i.content %></p>
+	<form action="/sessions/like/<%= i.id %>" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+		<input type="submit" name="like" value="like">
+	</form>
+<% end %>
